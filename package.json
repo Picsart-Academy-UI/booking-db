@@ -1,9 +1,13 @@
 {
   "name": "picsart-booking-db-models",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Chairs reservation in office",
   "main": "./src/index.js",
   "bin": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models.git"
+  },
   "keywords": [
     "reservation",
     "database",
@@ -13,6 +17,10 @@
   ],
   "author": "Lina Adamyan",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models/issues"
+  },
+  "homepage": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "mongoose": "^5.11.7"
