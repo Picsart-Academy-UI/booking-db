@@ -4,6 +4,11 @@
   "description": "Chairs reservation in office",
   "main": "./src/index.js",
   "bin": "./src/index.js",
+  "scripts": {
+    "lint": "node ./node_modules/eslint/bin/eslint.js ./src",
+    "lint:fix": "node ./node_modules/eslint/bin/eslint.js ./src --fix",
+    "precommit": "node ./node_modules/eslint/bin/eslint.js ./src"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models.git"
@@ -20,9 +25,18 @@
   "bugs": {
     "url": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models/issues"
   },
+  "pre-commit": [
+    "precommit"
+  ],
   "homepage": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "mongoose": "^5.11.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "pre-commit": "^1.2.2"
   }
 }
