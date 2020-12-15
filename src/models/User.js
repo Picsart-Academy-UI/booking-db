@@ -12,11 +12,18 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  age: {
+    type: Number,
+  },
   email: {
     type: String,
     required: true,
     lowercase: true,
     unique: true,
+  },
+  position_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Position',
   },
   team_id: {
     type: Schema.Types.ObjectId,
@@ -26,13 +33,18 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  invitation_token: {
-    type: String,
-    unique: true,
-  },
   password: {
     type: String,
     required: true,
+  },
+  invitation_token: {
+    type: String,
+  },
+  password_recovery_token: {
+    type: String,
+  },
+  password_recovery_exp: {
+    type: Number,
   },
   created_at: {
     type: Date,

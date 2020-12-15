@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models.git"
+    "url": "https://github.com/Picsart-Academy-UI/booking-db.git"
   },
   "keywords": [
     "reservation",
@@ -23,12 +23,12 @@
   "author": "Lina Adamyan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models/issues"
+    "url": "https://github.com/Picsart-Academy-UI/booking-db/issues"
   },
   "pre-commit": [
     "precommit"
   ],
-  "homepage": "https://github.com/Picsart-Academy-UI/picsart-booking-db-models",
+  "homepage": "https://github.com/Picsart-Academy-UI/booking-db",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "mongoose": "^5.11.7"
