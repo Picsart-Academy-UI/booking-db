@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 const Team = require('./models/Team');
 const Chair = require('./models/Chair');
-const Positions = require('./models/Positions');
+const Positions = require('./models/Position');
 const Reservation = require('./models/Reservation');
 
 let connection;
