@@ -18,8 +18,9 @@ const {
     User, 
     Team,  
     Chair, 
-    Reservation 
-} = require('picsart-booking-db-models');
+    Position,
+    Reservation
+} = require('booking-db');
 
 dbConnection(MONGO_URI);
 
