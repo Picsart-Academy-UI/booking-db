@@ -7,7 +7,7 @@
 Using npm:
 
 ```sh
-$ npm i picsart-booking-db-models
+$ npm i booking-db
 ```
 
 In Node.js:
