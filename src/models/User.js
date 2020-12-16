@@ -35,7 +35,7 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
+    select: false,
   },
   invitation_token: {
     type: String,
