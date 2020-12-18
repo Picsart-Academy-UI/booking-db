@@ -10,6 +10,10 @@ const TeamSchema = new Schema({
   members_count: {
     type: Number,
   },
+  table_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Table',
+  },
   created_at: {
     type: Date,
     default: Date.now(),

@@ -3,21 +3,30 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ReservationSchema = new Schema({
-  date_in: {
+  date_start: {
     type: Date,
     required: true,
   },
-  date_out: {
+  date_end: {
     type: Date,
   },
-  broker_id: {
+  user_id: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
-  chair_id: {
-    type: Number,
+  team_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Team',
     required: true,
+  },
+  chair_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Chair',
+  },
+  table_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Table',
   },
 });
 
