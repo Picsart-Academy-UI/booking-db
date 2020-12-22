@@ -7,12 +7,15 @@ const TeamSchema = new Schema({
     type: String,
     required: true,
   },
-  members_count: {
-    type: Number,
-  },
   table_id: {
     type: Schema.Types.ObjectId,
     ref: 'Table',
+  },
+  available_chairs: {
+    type: [],
+  },
+  table_config: {
+    type: Object,
   },
   created_at: {
     type: Date,

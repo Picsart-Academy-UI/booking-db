@@ -1,6 +1,6 @@
 {
   "name": "booking-db",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Chairs reservation in office",
   "main": "./src/index.js",
   "bin": "./src/index.js",
