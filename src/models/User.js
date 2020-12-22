@@ -54,16 +54,16 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.pre('save', async (next) => {
-  try {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(this.password, salt);
-    this.password = hashedPassword;
-    next();
-  } catch (e) {
-    next(e);
-  }
-});
+// UserSchema.pre('save', async (next) => {
+//   try {
+//     const salt = await bcrypt.genSalt(10);
+//     const hashedPassword = await bcrypt.hash(this.password, salt);
+//     this.password = hashedPassword;
+//     next();
+//   } catch (e) {
+//     next(e);
+//   }
+// });
 
 UserSchema.methods.isValidPassword = async (password) => {
   try {
