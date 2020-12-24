@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ChairSchema = new Schema({
-  number: {
-    type: Number,
-  },
+  number: Number,
 });
 
 module.exports = mongoose.model('chair', ChairSchema);

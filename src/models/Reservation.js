@@ -7,9 +7,7 @@ const ReservationSchema = new Schema({
     type: Date,
     required: true,
   },
-  date_end: {
-    type: Date,
-  },
+  date_end: Date,
   user_id: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -24,9 +22,14 @@ const ReservationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Chair',
   },
-  table_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Table',
+  status: String,
+  created_at: {
+    type: Date,
+    default: Date.now(),
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now(),
   },
 });
 
