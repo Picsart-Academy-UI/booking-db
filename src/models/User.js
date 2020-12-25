@@ -1,4 +1,3 @@
-// const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -16,9 +15,14 @@ const UserSchema = new Schema({
     lowercase: true,
     unique: true,
   },
+  birthday: Date,
   team_id: {
     type: Schema.Types.ObjectId,
     ref: 'Team',
+  },
+  position_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Position',
   },
   is_admin: {
     type: Boolean,

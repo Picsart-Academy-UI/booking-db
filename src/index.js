@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
-const User = require('./models/User');
-const Team = require('./models/Team');
-const Chair = require('./models/Chair');
-const Reservation = require('./models/Reservation');
+exports.User = require('./models/User');
+exports.Team = require('./models/Team');
+exports.Chair = require('./models/Chair');
+exports.Position = require('./models/Position');
+exports.Reservation = require('./models/Reservation');
 
 let connection;
 let is_connected = false;
 
-const dbConnection = (MONGO_URI) => {
+exports.dbConnection = (MONGO_URI) => {
   if (is_connected) {
     return connection;
   }
@@ -22,12 +23,4 @@ const dbConnection = (MONGO_URI) => {
 
   is_connected = true;
   return connection;
-};
-
-module.exports = {
-  User,
-  Team,
-  Chair,
-  Reservation,
-  dbConnection,
 };
