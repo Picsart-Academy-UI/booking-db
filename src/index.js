@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+exports.MongooseError = mongoose.Error;
+
 exports.User = require('./models/User');
 exports.Team = require('./models/Team');
 exports.Chair = require('./models/Chair');
