@@ -20,6 +20,9 @@ const UserSchema = new Schema({
     match: [email_reg, 'Please provide a valid email'],
     unique: true,
   },
+  phone: {
+    type: Number,
+  },
   birthday: {
     type: Date,
   },
