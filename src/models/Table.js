@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const TableSchema = new Schema({
   table_name: {
     type: String,
+    unique: true,
     required: [true, 'Please provide a table name'],
   },
   chairs_count: {

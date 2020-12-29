@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const ChairSchema = new Schema({
   number: {
     type: Number,
+    unique: true,
     required: [true, 'Please provide a chair name'],
   },
 });
