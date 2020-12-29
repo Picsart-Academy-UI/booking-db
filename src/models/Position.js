@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const PositionSchema = new Schema({
-  name: {
+  position_name: {
     type: String,
-    required: true,
+    required: [true, 'Please provide a position name'],
   },
   created_at: {
     type: Date,

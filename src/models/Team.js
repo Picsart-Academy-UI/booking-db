@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const TeamSchema = new Schema({
-  name: {
+  team_name: {
     type: String,
-    required: true,
+    required: [true, 'Please provide a name'],
   },
   created_at: {
     type: Date,
@@ -15,6 +15,6 @@ const TeamSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-});
+}, { timestamps: true });
 
-module.exports = mongoose.model('team', TeamSchema);
+module.exports = mongoose.model('Team', TeamSchema);

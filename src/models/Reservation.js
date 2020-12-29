@@ -3,26 +3,30 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ReservationSchema = new Schema({
-  date_start: {
+  start_date: {
     type: Date,
     required: true,
   },
-  date_end: Date,
+  end_date: {
+    type: Date,
+  },
   user_id: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
-  team_id: {
+  table_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
-    required: true,
+    ref: 'Table',
   },
   chair_id: {
     type: Schema.Types.ObjectId,
     ref: 'Chair',
   },
-  status: String,
+  status: {
+    type: String,
+    default: 'Pending',
+  },
   created_at: {
     type: Date,
     default: Date.now(),
@@ -31,6 +35,6 @@ const ReservationSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-});
+}, { timestamps: true });
 
-module.exports = mongoose.model('reservation', ReservationSchema);
+module.exports = mongoose.model('Reservation', ReservationSchema);

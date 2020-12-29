@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { email_reg } = require('../utils/regexps');
 
 const { Schema } = mongoose;
 
@@ -9,13 +10,19 @@ const UserSchema = new Schema({
   last_name: {
     type: String,
   },
+  accepted: {
+    type: Boolean,
+    default: false,
+  },
   email: {
-    type: String,
-    required: true,
     lowercase: true,
+    type: String,
+    match: [email_reg, 'Please provide a valid email'],
     unique: true,
   },
-  birthday: Date,
+  birthday: {
+    type: Date,
+  },
   team_id: {
     type: Schema.Types.ObjectId,
     ref: 'Team',
@@ -36,6 +43,6 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('user', UserSchema);
