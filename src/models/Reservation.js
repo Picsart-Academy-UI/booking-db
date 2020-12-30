@@ -37,4 +37,4 @@ const ReservationSchema = new Schema({
   },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Reservation', ReservationSchema);
+module.exports = mongoose.model('reservation', ReservationSchema);
