@@ -27,14 +27,6 @@ const ReservationSchema = new Schema({
     type: String,
     default: 'Pending',
   },
-  created_at: {
-    type: Date,
-    default: Date.now(),
-  },
-  updated_at: {
-    type: Date,
-    default: Date.now(),
-  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('reservation', ReservationSchema);

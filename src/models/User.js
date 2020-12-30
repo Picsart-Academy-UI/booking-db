@@ -41,14 +41,6 @@ const UserSchema = new Schema({
   push_subscriptions: {
     type: Array,
   },
-  created_at: {
-    type: Date,
-    default: Date.now(),
-  },
-  updated_at: {
-    type: Date,
-    default: Date.now(),
-  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('user', UserSchema);
