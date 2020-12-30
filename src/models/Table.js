@@ -6,7 +6,7 @@ const TableSchema = new Schema({
   table_name: {
     type: String,
     unique: true,
-    required: [true, 'Please provide a table name'],
+    required: true,
   },
   chairs_count: {
     type: Number,

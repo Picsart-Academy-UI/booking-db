@@ -6,7 +6,7 @@ const TeamSchema = new Schema({
   team_name: {
     type: String,
     unique: true,
-    required: [true, 'Please provide a name'],
+    required: true,
   },
 }, { timestamps: true });
 
