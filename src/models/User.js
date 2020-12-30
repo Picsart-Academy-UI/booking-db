@@ -38,6 +38,9 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  push_subscriptions: {
+    type: Array,
+  },
   created_at: {
     type: Date,
     default: Date.now(),

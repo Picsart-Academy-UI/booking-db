@@ -1,4 +1,4 @@
-exports.connect_db = require('./connection');
+exports.connectDB = require('./connection');
 
 exports.User = require('./models/User');
 exports.Team = require('./models/Team');
