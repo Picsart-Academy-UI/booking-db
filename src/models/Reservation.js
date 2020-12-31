@@ -10,9 +10,9 @@ const ReservationSchema = new Schema({
   end_date: {
     type: Date,
   },
-  user_id: {
+  team_id: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Team',
     required: true,
   },
   table_id: {

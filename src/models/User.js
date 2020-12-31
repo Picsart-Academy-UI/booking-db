@@ -26,6 +26,9 @@ const UserSchema = new Schema({
   birthday: {
     type: Date,
   },
+  profile_picture: {
+    type: String,
+  },
   team_id: {
     type: Schema.Types.ObjectId,
     ref: 'Team',
