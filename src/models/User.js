@@ -19,6 +19,7 @@ const UserSchema = new Schema({
     type: String,
     match: [email_reg, 'Please provide a valid email'],
     unique: true,
+    index: true,
   },
   phone: {
     type: Number,
@@ -40,6 +41,7 @@ const UserSchema = new Schema({
   is_admin: {
     type: Boolean,
     default: false,
+    index: true,
   },
   push_subscriptions: {
     type: Array,
