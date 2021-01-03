@@ -37,7 +37,7 @@ const ReservationSchema = new Schema({
   },
 }, { timestamps: true });
 
-ReservationSchema.index({
+ReservationSchema.createIndex({
   start_date: 1,
   team_id: 1,
   table_id: 1,
