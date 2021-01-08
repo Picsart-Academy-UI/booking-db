@@ -8,6 +8,11 @@ const ChairSchema = new Schema({
     unique: true,
     required: true,
   },
+  table_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Table',
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('chair', ChairSchema);

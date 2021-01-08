@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment-timezone');
 
 const { Schema } = mongoose;
 
@@ -41,12 +42,5 @@ const ReservationSchema = new Schema({
     index: true,
   },
 }, { timestamps: true });
-
-ReservationSchema.index({
-  start_date: 1,
-  team_id: 1,
-  table_id: 1,
-  chair_id: 1,
-}, { unique: true });
 
 module.exports = mongoose.model('reservation', ReservationSchema);

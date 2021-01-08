@@ -51,6 +51,7 @@ const UserSchema = new Schema({
   push_subscriptions: [
     {
       _id: false,
+      select: false,
       endpoint: {
         type: String,
         required: false,
