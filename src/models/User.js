@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+
+const Team = require('./Team');
+
 const { email_reg } = require('../utils/regexps');
 
 const { Schema } = mongoose;
@@ -33,9 +36,9 @@ const UserSchema = new Schema({
   profile_picture: {
     type: String,
   },
-  team_id: {
+  team: {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: Team,
     required: true,
   },
   position_id: {
@@ -53,4 +56,4 @@ const UserSchema = new Schema({
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
