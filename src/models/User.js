@@ -48,20 +48,9 @@ const UserSchema = new Schema({
     default: false,
     index: true,
   },
-  push_subscriptions: [
-    {
-      _id: false,
-      select: false,
-      endpoint: {
-        type: String,
-        required: false,
-      },
-      keys: {
-        type: String,
-        required: false,
-      },
-    },
-  ],
+  push_subscriptions: {
+    type: Array
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('user', UserSchema);
