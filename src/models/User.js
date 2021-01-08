@@ -36,7 +36,7 @@ const UserSchema = new Schema({
   profile_picture: {
     type: String,
   },
-  team: {
+  team_id: {
     type: Schema.Types.ObjectId,
     ref: Team,
     required: true,
@@ -52,8 +52,8 @@ const UserSchema = new Schema({
     index: true,
   },
   push_subscriptions: {
-    type: Array
-  }
+    type: Array,
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', UserSchema);
