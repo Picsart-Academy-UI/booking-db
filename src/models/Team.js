@@ -8,6 +8,18 @@ const TeamSchema = new Schema({
     unique: true,
     required: true,
   },
-}, { timestamps: true });
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+});
+
+TeamSchema.virtual('members_count', {
+  ref: 'User',
+  localField: '_id',
+  foreignField: 'team_id',
+  count: true
+});
+
 
 module.exports = mongoose.model('Team', TeamSchema);
