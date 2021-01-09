@@ -16,10 +16,15 @@ const TeamSchema = new Schema({
 
 TeamSchema.virtual('members_count', {
   ref: 'User',
-  localField: '_id',
+  localField: 'team_name',
   foreignField: 'team_id',
-  count: true
+  count: true,
 });
 
+TeamSchema.virtual('tables', {
+  ref: 'Table',
+  localField: 'team_name',
+  foreignField: 'team_id'
+});
 
 module.exports = mongoose.model('Team', TeamSchema);
