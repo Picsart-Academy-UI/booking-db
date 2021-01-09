@@ -41,9 +41,8 @@ const UserSchema = new Schema({
     ref: Team,
     required: true,
   },
-  position_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Position',
+  position: {
+    type: String,
     required: true,
   },
   is_admin: {
