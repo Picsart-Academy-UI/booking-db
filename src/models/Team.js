@@ -16,8 +16,8 @@ const TeamSchema = new Schema({
 
 TeamSchema.virtual('members_count', {
   ref: 'User',
-  localField: 'users.user_id',
-  foreignField: '_id',
+  localField: 'team_id',
+  foreignField: 'user_id',
   count: true,
 });
 
