@@ -23,8 +23,8 @@ TeamSchema.virtual('members_count', {
 
 TeamSchema.virtual('tables', {
   ref: 'Table',
-  localField: 'team_name',
-  foreignField: 'team_id',
+  localField: 'team_id',
+  foreignField: 'table_id',
 });
 
 module.exports = mongoose.model('Team', TeamSchema);
