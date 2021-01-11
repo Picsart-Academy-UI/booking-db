@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Team = require('./Team');
+
 const { Schema } = mongoose;
 
 const TableSchema = new Schema({
@@ -14,9 +16,9 @@ const TableSchema = new Schema({
   },
   team_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: Team,
   },
   table_config: Object,
 }, { timestamps: true });
 
-module.exports = mongoose.model('table', TableSchema);
+module.exports = mongoose.model('Table', TableSchema);
