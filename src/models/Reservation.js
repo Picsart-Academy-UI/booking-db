@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
-const moment = require('moment-timezone');
 
 const { Schema } = mongoose;
+
+const User = require('./User');
+
+const Team = require('./Team');
+
+const Table = require('./Table');
+
+const Chair = require('./Chair');
 
 const ReservationSchema = new Schema({
   start_date: {
@@ -15,24 +22,24 @@ const ReservationSchema = new Schema({
   },
   user_id: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: User,
     required: true,
   },
   team_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: Team,
     required: true,
     index: true,
   },
   table_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Table',
+    ref: Table,
     required: true,
     index: true,
   },
   chair_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Chair',
+    ref: Chair,
     required: true,
   },
   status: {
@@ -42,4 +49,4 @@ const ReservationSchema = new Schema({
   },
 }, { timestamps: true });
 
-module.exports = mongoose.model('reservation', ReservationSchema);
+module.exports = mongoose.model('Reservation', ReservationSchema);

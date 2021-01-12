@@ -8,6 +8,7 @@ const default_options = {
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
+  returnOriginal: false,
 };
 
 module.exports = (mongo_uri, options = default_options) => {

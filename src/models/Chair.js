@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Table = require('./Table');
+
 const { Schema } = mongoose;
 
 const ChairSchema = new Schema({
@@ -10,9 +12,9 @@ const ChairSchema = new Schema({
   },
   table_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Table',
+    ref: Table,
     required: true,
   },
 });
 
-module.exports = mongoose.model('chair', ChairSchema);
+module.exports = mongoose.model('Chair', ChairSchema);
