@@ -17,7 +17,9 @@ const UserSchema = new Schema({
   },
   accepted: {
     type: Boolean,
+    required: true,
     default: false,
+    index: true,
   },
   email: {
     lowercase: true,
@@ -47,6 +49,7 @@ const UserSchema = new Schema({
   },
   is_admin: {
     type: Boolean,
+    required: true,
     default: false,
     index: true,
   },

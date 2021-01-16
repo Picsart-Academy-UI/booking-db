@@ -1,6 +1,6 @@
 {
   "name": "booking-db",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Chairs reservation system in PicsArt",
   "main": "./src/index.js",
   "bin": "./src/index.js",
