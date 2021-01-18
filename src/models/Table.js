@@ -10,15 +10,22 @@ const TableSchema = new Schema({
     unique: true,
     required: true,
   },
-  chairs_count: {
-    type: Number,
-    default: 6,
-  },
   team_id: {
     type: Schema.Types.ObjectId,
     ref: Team,
   },
   table_config: Object,
-}, { timestamps: true });
+}, {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+});
+
+TableSchema.virtual('chairs_count', {
+  ref: 'Chair',
+  localField: '_id',
+  foreignField: 'table_id',
+  count: true,
+});
 
 module.exports = mongoose.model('Table', TableSchema);

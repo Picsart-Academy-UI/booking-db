@@ -15,6 +15,10 @@ const ChairSchema = new Schema({
     ref: Table,
     required: true,
   },
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
 });
 
 module.exports = mongoose.model('Chair', ChairSchema);
