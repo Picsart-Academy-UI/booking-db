@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const idValidator = require('mongoose-id-validator');
 
 const { Schema } = mongoose;
 
@@ -25,5 +26,7 @@ TeamSchema.virtual('tables', {
   localField: '_id',
   foreignField: 'team_id',
 });
+
+TeamSchema.plugin(idValidator);
 
 module.exports = mongoose.model('Team', TeamSchema);

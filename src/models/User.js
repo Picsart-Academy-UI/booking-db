@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-const Team = require('./Team');
+const idValidator = require('mongoose-id-validator');
 
 const { email_reg } = require('../utils/regexps');
 
@@ -40,7 +39,7 @@ const UserSchema = new Schema({
   },
   team_id: {
     type: Schema.Types.ObjectId,
-    ref: Team,
+    ref: 'Team',
     required: true,
   },
   position: {
@@ -61,5 +60,12 @@ const UserSchema = new Schema({
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 });
+
+UserSchema.pre('deleteOne', { document: false, query: true }, async function(next) {
+  const doc = await this.model.findOne(this.getFilter());
+  await mongoose.model('Reservation').deleteMany({ user_id: doc._id }, next);
+});
+
+UserSchema.plugin(idValidator);
 
 module.exports = mongoose.model('User', UserSchema);

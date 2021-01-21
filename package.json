@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/Picsart-Academy-UI/booking-db",
   "dependencies": {
-    "mongoose": "^5.11.11"
+    "mongoose": "^5.11.11",
+    "mongoose-id-validator": "^0.6.0"
   },
   "devDependencies": {
     "eslint": "^7.17.0",
