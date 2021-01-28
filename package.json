@@ -26,12 +26,8 @@
   },
   "homepage": "https://github.com/Picsart-Academy-UI/booking-db",
   "dependencies": {
+    "moment-timezone": "^0.5.32",
     "mongoose": "^5.11.11",
     "mongoose-id-validator": "^0.6.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.17.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
   }
 }
