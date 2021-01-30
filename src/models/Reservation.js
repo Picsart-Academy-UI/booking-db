@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const idValidator = require('mongoose-id-validator');
 
+const { BadRequest, Conflict } = require('../utils/errorResponse');
+
 const { checkDates, checkWeekends,
         formatDates, conflictingReservations} = require('../utils/reservation-helpers');
 
@@ -57,14 +59,14 @@ ReservationSchema.pre('validate', async function (next){
 
 ReservationSchema.pre('validate', async function (next) {
   if (!checkDates(this.formattedDates.start_date, this.formattedDates.end_date)) {
-    return next(new Error('Reservations must have appropriate dates'));
+    return next(new BadRequest('Reservations must have appropriate dates'));
   }
   return next();
 });
 
 ReservationSchema.pre('validate', async function (next){
   if (checkWeekends(this.formattedDates.start_date, this.formattedDates.end_date)) {
-    return next(new Error('The reservation should not have weekends'));
+    return next(new BadRequest('The reservation should not have weekends'));
   }
   next();
 });
@@ -75,7 +77,7 @@ ReservationSchema.pre('validate', async function (next){
       this.formattedDates.end_date,
       this.chair_id
   );
-  if (foundReservations.length > 0) return next(new Error('Conflict with existing reservations'))
+  if (foundReservations.length > 0) return next(new Conflict('Conflict with existing reservations'))
   next();
 });
 
