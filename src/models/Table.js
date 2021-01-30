@@ -4,8 +4,8 @@ const idValidator = require('mongoose-id-validator');
 const { Schema } = mongoose;
 
 const TableSchema = new Schema({
-  table_name: {
-    type: String,
+  table_number: {
+    type: Number,
     unique: true,
     required: true,
   },
