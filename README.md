@@ -15,7 +15,6 @@ const {
         User, 
         Team,
         Chair,
-        Position,
         Reservation,
         dbConnection
 } = require('booking-db');

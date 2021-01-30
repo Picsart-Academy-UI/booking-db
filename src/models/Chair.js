@@ -9,19 +9,18 @@ const ChairSchema = new Schema({
     unique: true,
     required: true,
   },
-  table_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Table',
-    required: true,
-  },
-}, {
-  timestamps: true,
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true },
-});
+}, { timestamps: true, });
 
 ChairSchema.pre('deleteOne', { document: false, query: true }, async function(next) {
   const doc = await this.model.findOne(this.getFilter());
+  await mongoose
+      .model('Table')
+      .updateMany(
+          { chairs_count: { $gte: doc.number } },
+          { $set: { chairs_count: doc.number - 1 } },
+          { new: true, runValidators: true },
+      );
+
   await mongoose.model('Reservation').deleteMany({ chair_id: doc._id }, next);
 });
 

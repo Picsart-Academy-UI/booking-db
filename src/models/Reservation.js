@@ -70,19 +70,15 @@ ReservationSchema.pre('validate', async function (next){
 });
 
 ReservationSchema.pre('validate', async function (next){
-  const foundReservations = await conflictingReservations(this.formattedDates.start_date,
-    this.formattedDates.end_date, this.chair_id);
+  const foundReservations = await conflictingReservations(
+      this.formattedDates.start_date,
+      this.formattedDates.end_date,
+      this.chair_id
+  );
   if (foundReservations.length > 0) return next(new Error('Conflict with existing reservations'))
   next();
 });
 
-ReservationSchema.pre('updateMany', async function (next){
-  console.log(this);
-})
-
-
-
 ReservationSchema.plugin(idValidator);
 
 module.exports = mongoose.model('Reservation', ReservationSchema);
-
