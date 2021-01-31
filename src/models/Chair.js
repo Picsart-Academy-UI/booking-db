@@ -9,7 +9,6 @@ const ChairSchema = new Schema({
     type: Number,
     required: true,
   },
-
   table_id: {
     type: Schema.Types.ObjectId,
     ref: 'Table'

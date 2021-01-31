@@ -52,33 +52,36 @@ const ReservationSchema = new Schema({
 }, { timestamps: true, versionKey: false });
 
 ReservationSchema.pre('validate', async function (next){
-  // formatting the dates;
-  this.formattedDates = formatDates(this.start_date, this.end_date);
-  next();
+    // formatting the dates;
+    this.formattedDates = formatDates(this.start_date, this.end_date);
+    return next();
 });
 
 ReservationSchema.pre('validate', async function (next) {
-  if (!checkDates(this.formattedDates.start_date, this.formattedDates.end_date)) {
-    return next(new BadRequest('Reservations must have appropriate dates'));
-  }
-  return next();
+    if (!checkDates(this.formattedDates.start_date, this.formattedDates.end_date)) {
+      return next(new BadRequest('Reservations must have appropriate dates'));
+    }
+    return next();
 });
 
 ReservationSchema.pre('validate', async function (next){
-  if (checkWeekends(this.formattedDates.start_date, this.formattedDates.end_date)) {
-    return next(new BadRequest('The reservation should not have weekends'));
-  }
-  next();
+    if (checkWeekends(this.formattedDates.start_date, this.formattedDates.end_date)) {
+      return next(new BadRequest('The reservation should not have weekends'));
+    }
+    return next();
 });
 
 ReservationSchema.pre('validate', async function (next){
-  const foundReservations = await conflictingReservations(
+
+    const foundReservations = await conflictingReservations(
       this.formattedDates.start_date,
       this.formattedDates.end_date,
       this.chair_id
-  );
-  if (foundReservations.length > 0) return next(new Conflict('Conflict with existing reservations'))
-  next();
+    );
+  console.log(foundReservations);
+    if (foundReservations.length > 0) return next(new Conflict('Conflict with existing reservations'))
+    return next();
+
 });
 
 ReservationSchema.plugin(idValidator);
