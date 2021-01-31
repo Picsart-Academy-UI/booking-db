@@ -26,7 +26,7 @@ TableSchema.index({
   table_number: 1
 }, { unique: true });
 
-TeamSchema.virtual('chairs', {
+TableSchema.virtual('chairs', {
   ref: 'Chair',
   localField: '_id',
   foreignField: 'table_id',
