@@ -16,8 +16,8 @@ const ChairSchema = new Schema({
 }, { timestamps: true, versionKey: false});
 
 ChairSchema.index({
-  table_id: 1,
-  number: 1
+    chair_number: 1,
+    table_id: 1
 }, { unique: true });
 
 ChairSchema.pre(
