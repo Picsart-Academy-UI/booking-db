@@ -26,6 +26,12 @@ TableSchema.index({
   table_number: 1
 }, { unique: true });
 
+TeamSchema.virtual('chairs', {
+  ref: 'Chair',
+  localField: '_id',
+  foreignField: 'table_id',
+});
+
 TableSchema.pre(
     'deleteOne',
     { document: false, query: true },
