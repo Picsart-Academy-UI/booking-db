@@ -28,12 +28,19 @@ TableSchema.pre('save', async function (next) {
       .sort({ number: -1 })
       .limit(1);
 
-  const diffChairsCount = this.chairs_count - numberOfMaxChair.number;
+  if (numberOfMaxChair) {
+    const diffChairsCount = this.chairs_count - numberOfMaxChair.number;
 
-  if (diffChairsCount > 0)
-    for (let i = numberOfMaxChair.number + 1; i <= this.chairs_count; i++) {
-      await ChairModel.create({ number: i }, next);
+    if (diffChairsCount > 0)
+      for (let i = numberOfMaxChair.number + 1; i <= this.chairs_count; i++) {
+        await mongoose.model('Chair').create({ number: i }, next);
+      }
+
+  } else {
+    for (let i = 1; i <= this.chairs_count; i++) {
+      await mongoose.model('Chair').create({ number: i }, next);
     }
+  }
 
 });
 
