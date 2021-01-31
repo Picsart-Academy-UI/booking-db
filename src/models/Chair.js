@@ -4,7 +4,7 @@ const idValidator = require('mongoose-id-validator');
 const { Schema } = mongoose;
 
 const ChairSchema = new Schema({
-  number: {
+  chair_number: {
     unique: false,
     type: Number,
     required: true,
