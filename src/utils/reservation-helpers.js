@@ -34,15 +34,16 @@ exports.conflictingReservations = (start_date, end_date, chair_id) => {
       {
         start_date: {$lte: start_date},
         end_date: {$gte: start_date},
+        status: ['pending', 'approved']
       },
       {
         start_date: {$gte: start_date},
         end_date: {$lte: end_date},
+        status: ['pending', 'approved']
       },
       {
-        start_date: {
-          $eq: end_date
-        }
+        start_date: { $eq: end_date },
+        status: ['pending', 'approved']
       }
     ],
     chair_id
