@@ -49,7 +49,7 @@ const ReservationSchema = new Schema({
     enum: ['pending', 'approved', 'rejected'],
     default: 'pending',
   },
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 
 ReservationSchema.pre('validate', async function (next){
   // formatting the dates;

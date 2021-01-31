@@ -9,7 +9,7 @@ const ChairSchema = new Schema({
     unique: true,
     required: true,
   },
-}, { timestamps: true, });
+}, { timestamps: true, versionKey: false });
 
 ChairSchema.pre('deleteOne', { document: false, query: true }, async function(next) {
   const doc = await this.model.findOne(this.getFilter());

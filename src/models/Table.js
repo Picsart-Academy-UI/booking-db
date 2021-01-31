@@ -19,7 +19,7 @@ const TableSchema = new Schema({
     default: 6,
   },
   table_config: Object,
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 
 TableSchema.pre('save', async function (next) {
   const numberOfMaxChair = await mongoose
