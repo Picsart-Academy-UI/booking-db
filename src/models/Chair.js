@@ -5,11 +5,21 @@ const { Schema } = mongoose;
 
 const ChairSchema = new Schema({
   number: {
+    unique: false,
     type: Number,
-    unique: true,
     required: true,
   },
-}, { timestamps: true, versionKey: false });
+
+  table_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Table'
+  }
+}, { timestamps: true, versionKey: false});
+
+ChairSchema.index({
+  table_id: 1,
+  number: 1
+}, {unique: true})
 
 ChairSchema.pre('deleteOne', { document: false, query: true }, async function(next) {
   const doc = await this.model.findOne(this.getFilter());

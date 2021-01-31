@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 
 const TableSchema = new Schema({
   table_number: {
+    unique: false,
     type: Number,
-    unique: true,
     required: true,
   },
   team_id: {
@@ -21,28 +21,12 @@ const TableSchema = new Schema({
   table_config: Object,
 }, { timestamps: true, versionKey: false });
 
-TableSchema.pre('save', async function (next) {
-  const numberOfMaxChair = await mongoose
-      .model('Chair')
-      .findOne({}, { number: 1 })
-      .sort({ number: -1 })
-      .limit(1);
 
-  if (numberOfMaxChair) {
-    const diffChairsCount = this.chairs_count - numberOfMaxChair.number;
 
-    if (diffChairsCount > 0)
-      for (let i = numberOfMaxChair.number + 1; i <= this.chairs_count; i++) {
-        await mongoose.model('Chair').create({ number: i }, next);
-      }
-
-  } else {
-    for (let i = 1; i <= this.chairs_count; i++) {
-      await mongoose.model('Chair').create({ number: i }, next);
-    }
-  }
-
-});
+TableSchema.index({
+  team_id: 1,
+  table_number: 1
+}, {unique: true})
 
 TableSchema.pre(
     'deleteOne',
