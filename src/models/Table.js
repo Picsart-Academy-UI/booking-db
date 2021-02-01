@@ -38,6 +38,10 @@ TableSchema.pre(
     async function(next) {
       const doc = await this.model.findOne(this.getFilter());
       await mongoose
+          .model('Chair')
+          .deleteMany({ table_id: doc._id }, next);
+
+      await mongoose
           .model('Reservation')
           .deleteMany({ table_id: doc._id }, next);
     }
