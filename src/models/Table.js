@@ -22,17 +22,26 @@ const TableSchema = new Schema({
 }, { timestamps: true, versionKey: false });
 
 
-
 TableSchema.index({
   team_id: 1,
   table_number: 1
-}, {unique: true})
+}, { unique: true });
+
+TableSchema.virtual('chairs', {
+  ref: 'Chair',
+  localField: '_id',
+  foreignField: 'table_id',
+});
 
 TableSchema.pre(
     'deleteOne',
     { document: false, query: true },
     async function(next) {
       const doc = await this.model.findOne(this.getFilter());
+      await mongoose
+          .model('Chair')
+          .deleteMany({ table_id: doc._id }, next);
+
       await mongoose
           .model('Reservation')
           .deleteMany({ table_id: doc._id }, next);
