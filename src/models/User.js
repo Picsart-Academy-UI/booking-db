@@ -18,7 +18,6 @@ const UserSchema = new Schema({
     type: Boolean,
     required: true,
     default: false,
-    index: true,
   },
   email: {
     lowercase: true,
@@ -26,7 +25,6 @@ const UserSchema = new Schema({
     required: true,
     match: [email_reg, 'Please provide a valid email'],
     unique: true,
-    index: true,
   },
   phone: {
     type: Number,
@@ -50,7 +48,6 @@ const UserSchema = new Schema({
     type: Boolean,
     required: true,
     default: false,
-    index: true,
   },
   push_subscriptions: {
     type: Array,

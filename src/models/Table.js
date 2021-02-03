@@ -12,6 +12,7 @@ const TableSchema = new Schema({
   team_id: {
     type: Schema.Types.ObjectId,
     ref: 'Team',
+    required: true,
   },
   chairs_count: {
     type: Number,
