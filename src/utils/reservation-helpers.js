@@ -15,18 +15,6 @@ exports.checkDates = (start_date, end_date) => {
   return start_date >= today && end_date >= today && end_date >= start_date;
 };
 
-exports.checkWeekends = (start, end) => {
-  let d1 = new Date(start),
-    d2 = new Date(end),
-    isWeekend = false;
-  while (d1 <= d2) {
-    let day = d1.getDay();
-    isWeekend = (day === 6) || (day === 0);
-    if (isWeekend) { return true; }
-    d1.setDate(d1.getDate() + 1);
-  }
-  return false;
-};
 
 exports.conflictingReservations = (start_date, end_date, chair_id) => {
   return mongoose.model('Reservation').find({
