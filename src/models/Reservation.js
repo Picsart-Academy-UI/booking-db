@@ -12,11 +12,9 @@ const ReservationSchema = new Schema({
   start_date: {
     type: Date,
     required: true,
-    index: true,
   },
   end_date: {
     type: Date,
-    index: true,
   },
   user_id: {
     type: Schema.Types.ObjectId,
@@ -28,7 +26,6 @@ const ReservationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Team',
     required: true,
-    index: true,
     immutable: true
   },
   table_id: {
