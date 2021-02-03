@@ -9,11 +9,18 @@ const ChairSchema = new Schema({
     type: Number,
     required: true,
   },
+
   table_id: {
     type: Schema.Types.ObjectId,
     ref: 'Table'
   }
 }, { timestamps: true, versionKey: false});
+
+
+ChairSchema.index({
+  table_id: 1,
+  number: 1
+}, {unique: true})
 
 ChairSchema.index({
     chair_number: 1,
