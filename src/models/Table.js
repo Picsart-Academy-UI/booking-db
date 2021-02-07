@@ -20,12 +20,12 @@ const TableSchema = new Schema({
     default: 6,
   },
   table_config: Object,
-}, { timestamps: true, versionKey: false });
+}, { timestamps: true, versionKey: false});
 
 
 TableSchema.index({
-  team_id: 1,
-  table_number: 1
+  "team_id": 1,
+  "table_number": 1
 }, { unique: true });
 
 TableSchema.virtual('chairs', {

@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const idValidator = require('mongoose-id-validator');
 
-const { BadRequest, Conflict } = require('../utils/errorResponse');
-
 const { checkFormattedDates,
   attachFormattedDates, checkConflictingReservations,
-  chekTableId, checkChairId,
-  checkUserId} = require('../utils/reservation-helpers');
+  chekTableId, checkChairId,checkForToday,
+  checkUserId} = require('../utils/reservationValidators');
 
 const { Schema } = mongoose;
 
@@ -17,6 +15,7 @@ const ReservationSchema = new Schema({
   },
   end_date: {
     type: Date,
+    required: true
   },
   user_id: {
     type: Schema.Types.ObjectId,
@@ -34,7 +33,6 @@ const ReservationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Table',
     required: true,
-    index: true,
     immutable: true
   },
   chair_id: {
@@ -60,7 +58,10 @@ ReservationSchema.post('validate',checkUserId);
 
 ReservationSchema.post('validate', chekTableId);
 
-ReservationSchema.post('validate',checkChairId )
+ReservationSchema.post('validate',checkChairId );
+
+ReservationSchema.pre('save', checkForToday);
+
 
 ReservationSchema.plugin(idValidator);
 

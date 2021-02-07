@@ -18,8 +18,8 @@ const ChairSchema = new Schema({
 
 
 ChairSchema.index({
-  table_id: 1,
-  number: 1
+  "table_id": 1,
+  "chair_number": 1
 }, {unique: true})
 
 ChairSchema.index({

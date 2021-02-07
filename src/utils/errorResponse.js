@@ -79,6 +79,16 @@ class Conflict extends Error {
     }
 }
 
+class ReservationSplit extends Error {
+    constructor(message, payload) {
+        super();
+        this.name = this.constructor.name;
+        this.payload = payload;
+        this.message = message;
+        Error.captureStackTrace(this, this.constructor);
+    }
+}
+
 module.exports = {
     ErrorResponse,
     NotFound,
@@ -87,5 +97,6 @@ module.exports = {
     BadRequest,
     Unauthorized,
     NotAcceptable,
-    MethodNotAllowed
+    MethodNotAllowed,
+    ReservationSplit
 };
