@@ -1,7 +1,10 @@
-exports.connectDB = require('./connection');
+const { connectDB, mongoClose } = require('./connection');
 
-exports.User = require('./models/User');
-exports.Team = require('./models/Team');
-exports.Chair = require('./models/Chair');
-exports.Table = require('./models/Table');
-exports.Reservation = require('./models/Reservation');
+const User = require('./models/User');
+const Team = require('./models/Team');
+const Table = require('./models/Table');
+const Reservation = require('./models/Reservation');
+
+module.exports = {
+    connectDB, mongoClose, User, Team, Table, Reservation
+}

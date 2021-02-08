@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const idValidator = require('mongoose-id-validator');
+const uniqueValidator = require('mongoose-beautiful-unique-validation');
 
 const { Schema } = mongoose;
 
@@ -24,9 +25,9 @@ const TableSchema = new Schema({
 
 
 TableSchema.index({
-  "team_id": 1,
-  "table_number": 1
-}, { unique: true });
+  team_id: 1,
+  table_number: 1
+}, { unique: '[team, table] pair already exists.' });
 
 TableSchema.virtual('chairs', {
   ref: 'Chair',
@@ -50,5 +51,6 @@ TableSchema.pre(
 );
 
 TableSchema.plugin(idValidator);
+TableSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Table', TableSchema);

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const idValidator = require('mongoose-id-validator');
+const uniqueValidator = require('mongoose-beautiful-unique-validation');
 
 const { Schema } = mongoose;
 
@@ -20,7 +21,7 @@ const ChairSchema = new Schema({
 ChairSchema.index({
   "table_id": 1,
   "chair_number": 1
-}, {unique: true})
+}, {unique: '[table, chair] pair already exists.'})
 
 ChairSchema.index({
     chair_number: 1,
@@ -37,5 +38,6 @@ ChairSchema.pre(
 );
 
 ChairSchema.plugin(idValidator);
+ChairSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Chair', ChairSchema);
