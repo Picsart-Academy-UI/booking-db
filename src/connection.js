@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { MongoAuthFailed } = require('./utils/errorResponse');
 
 let connect;
 let is_connected;
@@ -23,13 +22,11 @@ exports.connectDB = (mongo_uri, options = default_options) => {
   });
 
   mongoose.connection.on('error', (error) => {
-    throw new error.message;
+    throw new error.message();
   });
 
   is_connected = true;
   return connect;
 };
 
-exports.mongoClose = (cb1, cb2) => {
-  return mongoose.connection.close(false, cb1, cb2);
-};
+exports.mongoClose = (cb1, cb2) => mongoose.connection.close(false, cb1, cb2);

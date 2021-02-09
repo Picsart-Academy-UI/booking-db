@@ -6,5 +6,5 @@ const Table = require('./models/Table');
 const Reservation = require('./models/Reservation');
 
 module.exports = {
-    connectDB, mongoClose, User, Team, Table, Reservation
-}
+  connectDB, mongoClose, User, Team, Table, Reservation
+};
