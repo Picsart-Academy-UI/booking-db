@@ -21,8 +21,7 @@ const TableSchema = new Schema({
     default: 6,
   },
   table_config: Object,
-}, { timestamps: true, versionKey: false});
-
+}, { timestamps: true, versionKey: false });
 
 TableSchema.index({
   team_id: 1,
@@ -36,18 +35,18 @@ TableSchema.virtual('chairs', {
 });
 
 TableSchema.pre(
-    'deleteOne',
-    { document: false, query: true },
-    async function(next) {
-      const doc = await this.model.findOne(this.getFilter());
-      await mongoose
-          .model('Chair')
-          .deleteMany({ table_id: doc._id }, next);
+  'deleteOne',
+  { document: false, query: true },
+  async (next) => {
+    const doc = await this.model.findOne(this.getFilter());
+    await mongoose
+      .model('Chair')
+      .deleteMany({ table_id: doc._id }, next);
 
-      await mongoose
-          .model('Reservation')
-          .deleteMany({ table_id: doc._id }, next);
-    }
+    await mongoose
+      .model('Reservation')
+      .deleteMany({ table_id: doc._id }, next);
+  }
 );
 
 TableSchema.plugin(idValidator);

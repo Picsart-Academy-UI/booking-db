@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment-timezone');
 
-
 const format = 'YYYY-MM-DD';
 
 const getToday = () => moment().tz('Asia/Yerevan').format(format);
@@ -31,19 +30,18 @@ const checkRange = (oldReservation, newReservation) => {
   return startCheck && endCheck;
 };
 
-
 const conflictingReservations = (reservation) => {
-  const {start_date, end_date, user_id} = reservation;
+  const { start_date, end_date, user_id } = reservation;
   return mongoose.model('Reservation').find({
     $or: [
       {
-        start_date: {$lte: start_date},
-        end_date: {$gte: start_date},
+        start_date: { $lte: start_date },
+        end_date: { $gte: start_date },
         status: ['pending', 'approved']
       },
       {
-        start_date: {$gte: start_date},
-        end_date: {$lte: end_date},
+        start_date: { $gte: start_date },
+        end_date: { $lte: end_date },
         status: ['pending', 'approved']
       },
       {
@@ -53,7 +51,7 @@ const conflictingReservations = (reservation) => {
     ],
     user_id
   }).sort('rating');
-}
+};
 
 const divideReservation = (reservation) => {
   const {
@@ -85,7 +83,6 @@ const divideReservation = (reservation) => {
   return [reserve_1, reserve_2];
 };
 
-
 const attachMissingFields = (reservation, foundReservation) => ({
   start_date: reservation.start_date || foundReservation.start_date,
   end_date: reservation.end_date || foundReservation.end_date,
@@ -104,6 +101,4 @@ module.exports = {
   checkReservationDates,
   attachMissingFields,
   checkRange
-}
-
-
+};

@@ -15,26 +15,25 @@ const ChairSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Table'
   }
-}, { timestamps: true, versionKey: false});
-
-
-ChairSchema.index({
-  "table_id": 1,
-  "chair_number": 1
-}, {unique: '[table, chair] pair already exists.'})
+}, { timestamps: true, versionKey: false });
 
 ChairSchema.index({
-    chair_number: 1,
-    table_id: 1
+  table_id: 1,
+  chair_number: 1
+}, { unique: '[table, chair] pair already exists.' });
+
+ChairSchema.index({
+  chair_number: 1,
+  table_id: 1
 }, { unique: true });
 
 ChairSchema.pre(
-    'deleteOne',
-    { document: false, query: true },
-    async function(next) {
-      const doc = await this.model.findOne(this.getFilter());
-      await mongoose.model('Reservation').deleteMany({ chair_id: doc._id }, next);
-    }
+  'deleteOne',
+  { document: false, query: true },
+  async (next) => {
+    const doc = await this.model.findOne(this.getFilter());
+    await mongoose.model('Reservation').deleteMany({ chair_id: doc._id }, next);
+  }
 );
 
 ChairSchema.plugin(idValidator);

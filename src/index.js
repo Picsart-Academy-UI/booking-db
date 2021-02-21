@@ -8,4 +8,4 @@ const Reservation = require('./models/Reservation');
 
 module.exports = {
     connectDB, mongoClose, User, Team, Chair, Table, Reservation
-}
+};

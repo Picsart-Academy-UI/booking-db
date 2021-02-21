@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const idValidator = require('mongoose-id-validator');
 
-const { checkFormattedDates,
+const {
+  checkFormattedDates,
   attachFormattedDates, checkConflictingReservations,
-  chekTableId, checkChairId,checkForToday,
-  checkUserId} = require('../utils/reservationValidators');
+  chekTableId, checkChairId, checkForToday,
+  checkUserId
+} = require('../utils/reservationValidators');
 
 const { Schema } = mongoose;
 
@@ -54,14 +56,13 @@ ReservationSchema.pre('validate', checkFormattedDates);
 
 ReservationSchema.pre('validate', checkConflictingReservations);
 
-ReservationSchema.post('validate',checkUserId);
+ReservationSchema.post('validate', checkUserId);
 
 ReservationSchema.post('validate', chekTableId);
 
-ReservationSchema.post('validate',checkChairId );
+ReservationSchema.post('validate', checkChairId);
 
 ReservationSchema.pre('save', checkForToday);
-
 
 ReservationSchema.plugin(idValidator);
 
