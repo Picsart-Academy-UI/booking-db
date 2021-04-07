@@ -35,7 +35,7 @@ TeamSchema.plugin(idValidator);
 TeamSchema.pre(
   'deleteOne',
   { document: false, query: true },
-  async (next) => {
+  async function (next) {
     const doc = await this.model.findOne(this.getFilter()).populate('members_count');
 
     if (doc.members_count > 0) {

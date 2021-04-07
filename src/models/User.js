@@ -59,7 +59,7 @@ const UserSchema = new Schema({
   toObject: { virtuals: true },
 });
 
-UserSchema.pre('deleteOne', { document: false, query: true }, async (next) => {
+UserSchema.pre('deleteOne', { document: false, query: true }, async function (next) {
   const doc = await this.model.findOne(this.getFilter());
   await mongoose.model('Reservation').deleteMany({ user_id: doc._id }, next);
 });

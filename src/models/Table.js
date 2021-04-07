@@ -37,7 +37,7 @@ TableSchema.virtual('chairs', {
 TableSchema.pre(
   'deleteOne',
   { document: false, query: true },
-  async (next) => {
+  async function (next) {
     const doc = await this.model.findOne(this.getFilter());
     await mongoose
       .model('Chair')
