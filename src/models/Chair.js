@@ -30,7 +30,7 @@ ChairSchema.index({
 ChairSchema.pre(
   'deleteOne',
   { document: false, query: true },
-  async (next) => {
+  async function (next) {
     const doc = await this.model.findOne(this.getFilter());
     await mongoose.model('Reservation').deleteMany({ chair_id: doc._id }, next);
   }
